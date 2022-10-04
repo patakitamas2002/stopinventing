@@ -2,7 +2,7 @@
 
 
 # Üzleti folyamatok modellje
-
+![uzleti_folyamat_modell](https://user-images.githubusercontent.com/113434354/193841204-4f0c90ce-38c3-491e-bd02-be316f64f313.jpg)
 # Funkcionális tervek
 
 Rendszerszereplők:
@@ -41,3 +41,4 @@ Fejlesztői eszközök:
     Diagrams.net
 
 # Adatbázis terv
+<img width="411" alt="adatbazis_model" src="https://user-images.githubusercontent.com/113434354/193841446-4a2fc2d3-364a-402e-b42b-1509155c8b84.PNG">
