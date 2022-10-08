@@ -14,14 +14,6 @@
 <body>
 
 <!--<div class="topnav">
-<?php
-    switch($_SESSION['permissions']) {
-        case 'mod':
-          echo "<a href='index.php?page=-5'>Zene feltöltése</a>";          
-            break;
-        }
-?>  
-  
     <a href='index.php?page=0'></a>
     <a href='index.php?page=-10'></a>
     <a href='index.php?page=10'></a><tr>";
@@ -64,6 +56,11 @@
         </ul>
       </li>
       </ul>
+        ';
+      }
+      else{
+        echo '<ul class="nav navbar-nav navbar-right">
+        <li><a href="forms/loginform.php">Bejelentkezés <span class="glyphicon glyphicon-log-in"></span></a></li>
         ';
       }
       ?>

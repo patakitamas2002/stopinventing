@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="style.css"/>
 <link rel="stylesheet"  
     href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
     <style>   
@@ -22,10 +23,6 @@
 <body>
     <?php
         session_start();
-        if(!isset($_SESSION['id']))
-        {
-            header('Location: forms/loginform.php');
-        }
     ?>
     <div class="menu">
         

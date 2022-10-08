@@ -1,4 +1,7 @@
 <?php
-    session_destroy();
-    header('Location: forms/loginform.php');
+    session_start();
+    unset($_SESSION["id"]);
+    unset($_SESSION["username"]);
+    unset($_SESSION["role"]);
+    header('Location: index.php?page=0');
 ?>
