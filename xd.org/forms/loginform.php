@@ -38,7 +38,9 @@
     <title>Login</title>
 </head>
 <body>
+    
     <form action="../processors/login.php" method="post">
+    <a href="../index.php?page=0">Jaj, mégse szeretnék bejelentkezni</a><br>
         Felhasználónév:
         <input type="text" name="username">
         <br>
