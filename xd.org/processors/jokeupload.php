@@ -1,6 +1,7 @@
 <?php
 session_start();
 require '../mydbms.php';
+
     if(!isset($_POST['name']) &&
         !isset($_POST['joke']) &&
         !isset($_POST['file']))

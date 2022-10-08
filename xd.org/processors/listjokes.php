@@ -23,7 +23,6 @@
 </head>
 <body>
 <table class="table table-bordered table-striped">  
-
 <thead>  
 <tr>  
 <th>Id</th>  
@@ -33,16 +32,6 @@
 <th>Meme</th> 
 <th>Feltöltő ID</th>
 <th>Letöltés</th>
-<?php
-$con = connect('viccoldal', 'root', '');
-$current =$_SESSION['id'];
-$query = "SELECT uploaderId FROM posts Where uploaderId = $current";
-$result = mysqli_query($con , $query);
-$results = mysqli_fetch_all($result);
-if(($_SESSION['role'] == "user" and $results) or $_SESSION['role'] == "mod")
-    echo "<th>Törlés</th>" 
-
-?>
 </tr>  
 
 <thead>  
@@ -52,8 +41,8 @@ if(($_SESSION['role'] == "user" and $results) or $_SESSION['role'] == "mod")
 <th></th>
 <th><input type="text" name="searchTitle" placeholder="Cím"></th>
 <th><input type="text" name="searchArtist" placeholder="Készítő"></th>
-<th><input type="text" name="searchLang" placeholder="Vicc"></th>
-<th><input type="text" name="searchGenre" placeholder="Meme"></th> 
+<th><input type="text" name="searchJoke" placeholder="Vicc"></th>
+<th><input type="text" name="searchMeme" placeholder="Meme"></th> 
 
 <th><button type="submit" name="kereses">Keresés</button></th>
 </form>
@@ -62,32 +51,35 @@ if(($_SESSION['role'] == "user" and $results) or $_SESSION['role'] == "mod")
 <tbody>  
 
 
-<?php  
+<?php 
+if(!isset($_SESSION['id'])){
+require 'mydbms.php';
+}
+
 $searchTitle= "";
 $searchArtist= "";
-$searchLang= "";
-$searchGenre= "";
+$searchJoke= "";
+$searchMeme= "";
 if(isset($_GET["searchTitle"])){    
     $searchTitle= $_GET["searchTitle"];
-    echo $searchTitle;
 }
 
 if(isset($_GET["searchArtist"])){
     $searchArtist= $_GET["searchArtist"];
 }
-if(isset($_GET["searchLang"])){
-    $searchLang= $_GET["searchLang"];
+if(isset($_GET["searchJoke"])){
+    $searchJoke= $_GET["searchJoke"];
 }
-if(isset($_GET["searchGenre"])){
-    $searchGenre= $_GET["searchGenre"];
+if(isset($_GET["searchMeme"])){
+    $searchMeme= $_GET["searchMeme"];
 }
    
 $con = connect('viccoldal', 'root', '');
 $query= "SELECT * FROM posts WHERE 
-    name LIKE '%$searchTitle%' AND 
-    artist LIKE '%$searchArtist%' AND
-    language LIKE '%$searchLang%' AND
-    genre LIKE '%$searchGenre%' ";
+    postTitle LIKE '%$searchTitle%' AND 
+    uploaderId LIKE '%$searchArtist%' AND
+    joke LIKE '%$searchJoke%' AND
+    meme LIKE '%$searchMeme%' ";
 $result = mysqli_query($con , $query);
 $results = mysqli_fetch_all($result);
 foreach($result as $row){
