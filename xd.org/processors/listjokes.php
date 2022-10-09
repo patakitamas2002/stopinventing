@@ -22,93 +22,80 @@
     <title>Viccek</title>
 </head>
 <body>
-<table class="table table-bordered table-striped">  
-<thead>  
-<tr>  
-<th>Id</th>  
-<th>Cím</th>
-<th>Készítő</th>
-<th>Vicc</th>
-<th>Meme</th> 
-<th>Feltöltő ID</th>
-<th>Letöltés</th>
-</tr>  
-
-<thead>  
-
-<tr>  
-<form action="" method="$_GET">
-<th></th>
-<th><input type="text" name="searchTitle" placeholder="Cím"></th>
-<th><input type="text" name="searchArtist" placeholder="Készítő"></th>
-<th><input type="text" name="searchJoke" placeholder="Vicc"></th>
-<th><input type="text" name="searchMeme" placeholder="Meme"></th> 
-
-<th><button type="submit" name="kereses">Keresés</button></th>
-</form>
-</tr>  
-
-<tbody>  
-
-
-<?php 
-if(!isset($_SESSION['id'])){
-require 'mydbms.php';
-}
-
+<table >  
+    <thead>  
+        <th>Keresés</tr>
+    <tr>
+    <form action="" method="$_GET">
+        <th><input type="text" name="searchTitle" placeholder="Cím"></th>        
+        <th><input type="text" name="searchJoke" placeholder="Vicc"></th>
+        <th><input type="text" name="searchUser" placeholder="Feltöltő"></th>
+        <th><button type="submit" name="kereses">Keresés</button></th>
+    </form>
+    </tr>
+</table> 
+<?php  
 $searchTitle= "";
-$searchArtist= "";
 $searchJoke= "";
-$searchMeme= "";
+$searchUser= "";
 if(isset($_GET["searchTitle"])){    
     $searchTitle= $_GET["searchTitle"];
-}
-
-if(isset($_GET["searchArtist"])){
-    $searchArtist= $_GET["searchArtist"];
+    //echo $searchTitle;
 }
 if(isset($_GET["searchJoke"])){
     $searchJoke= $_GET["searchJoke"];
 }
-if(isset($_GET["searchMeme"])){
-    $searchMeme= $_GET["searchMeme"];
+if(isset($_GET["searchUser"])){
+    $searchUser= $_GET["searchUser"];
 }
-   
+if(!isset($_SESSION['id'])){
+require './mydbms.php';
+}
 $con = connect('viccoldal', 'root', '');
-$query= "SELECT * FROM posts WHERE 
-    postTitle LIKE '%$searchTitle%' AND 
-    uploaderId LIKE '%$searchArtist%' AND
-    joke LIKE '%$searchJoke%' AND
-    meme LIKE '%$searchMeme%' ";
+$query= "SELECT posts.postDate as date, users.username as uploader, 
+    posts.postTitle as title, posts.joke as joke, posts.postImage as image,
+    posts.postType as type, posts.uploaderId as uploaderId, posts.postId as id
+    from posts
+    INNER JOIN
+    users ON uploaderId = users.userId
+    WHERE 
+    posts.postTitle LIKE '%$searchTitle%' AND
+    posts.joke LIKE '%$searchJoke%' AND
+    users.username LIKE '%$searchUser%'"; 
+    
+//echo $query;
 $result = mysqli_query($con , $query);
 $results = mysqli_fetch_all($result);
 foreach($result as $row){
-?>  
-            <tr>  
-                <?php $path = "jokes/".$row["artist"]."/". $row["name"]."/". $row["file"] ?>
-				<td><?php echo $row["id"]; ?></td>  
-				<td><?php echo $row["name"]; ?></td>
-				<td><?php echo $row["artist"]; ?></td>
-				<td><?php echo $row["language"]; ?></td>
-				<td><?php echo $row["genre"]; ?></td>
-                <td><?php echo $row["userId"] ?> </td>
-                
-                <td><?php echo'<p><a href="'.$path.'" target="_blank">Letöltés</a></p>'; ?> </td>
-                
-                <?php if (($_SESSION['role'] == "user" and $result) or $_SESSION['role'] == "mod") : ?>
-                    <td>
-                    <form action="processors/songdelete.php" method="POST">
-                        <input type="hidden" name="songId" value="<?= $row["id"] ?>">
-                        <button type="submit">Töröl</button>
-                    </form>
-                    </td>
-                <?php endif; ?>
-                
-            </tr>  
-<?php  
-};  
-?>  
-</tbody>  
-</table>  
-</body>
-</html>
+?>
+<table class="table table-bordered table-striped">
+        <td><?php echo $row["uploader"] ?> </td>
+        <?php if (isset($_SESSION['id'])){
+            if ($_SESSION['role'] == 'mod' || $_SESSION['id'] == $row['uploaderId'] ) : ?>
+            <td><form action="processors/postdelete.php" method="POST">
+                <input type="hidden" name="postId" value="<?= $row["id"] ?>">
+                <button type="submit">Töröl</button>
+            </form></td>
+    <?php endif; } ?>
+        
+    <tr> 
+        <th><?php echo $row["title"]; ?> </th>
+        <th><?php echo $row["date"]; ?> </th>
+    <tr><td>  
+        <?php
+        if($row['type'] == 'joke'){
+            echo $row["joke"];
+        }
+        else{
+            $folder = preg_replace("/[^a-zA-Z0-9.]/", "", $row["title"]);
+            $path = "jokes/".$row["uploader"]."/".$folder."/". $row["image"];
+            echo "<img src=$path height=400>";
+        } 
+        ?>
+        </td>  
+    </tr>
+</table>
+<?php
+
+}
+?>

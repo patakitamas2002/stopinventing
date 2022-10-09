@@ -15,18 +15,20 @@ require '../mydbms.php';
         $artist = $_SESSION['username'];
         $joke = $_POST["joke"];
         $kuldes_datum = date("Y-m-d h:i:s");
-        if(!file_exists('../jokes/'.$artist.'/'.$name)){
-            mkdir("../jokes/".$artist.'/'.$name, 0777, true); 
+
+        $title = preg_replace("/[^a-zA-Z0-9.]/", "", $name);
+        if(!file_exists('../jokes/'.$artist.'/'.$title)){
+            mkdir("../jokes/".$artist.'/'.$title, 0777, true); 
         }
         
         $fileNev = trim($_FILES["file"]["name"]);
         $fileNev = preg_replace("/[^a-zA-Z0-9. ]/", "", $fileNev);
         //echo $fileNev;
-        $utvonal = "../jokes/".$artist.'/'.$name."/".$fileNev;
+        $utvonal = "../jokes/".$artist.'/'.$title."/".$fileNev;
         //echo $utvonal;
         move_uploaded_file($_FILES["file"]["tmp_name"], $utvonal);
         $con = connect('viccoldal', 'root', '');
-        if(!isset($_POST['joke'])){
+        if($fileNev!=''){
             $query = "INSERT INTO posts
             (postTitle,postImage,postLikes,postDate,uploaderId,postType)
             VALUES 
