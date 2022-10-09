@@ -28,8 +28,11 @@
       <a class="navbar-brand" href="index.php">XD.org</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="index.php?page=0">Viccek listázása</a></li>
+      <li><a href="index.php?page=0 ">Viccek listázása</a></li>
       <li><a href="index.php?page=-5">Feltöltés</a></li>
+      <?php if(isset($_SESSION['id'])){ ?>
+      <li><a href="index.php?page=20">Profilok</a></li>
+      <?php } ?>
       </ul>
       <?php
       if(isset($_SESSION["id"])){
