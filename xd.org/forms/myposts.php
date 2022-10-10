@@ -1,35 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet"  
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
-    <style>   
-    table {  
-        border-collapse: collapse;  
-    }  
-        .inline{   
-            display: inline-block;   
-               
-            margin: 20px 0px;   
-        }   
-         
-        input, button{   
-            height: 34px;   
-        }  </style> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Viccek</title>
+    <link rel="stylesheet" href="myhome.css">
 </head>
 <body>
-<table >  
-    <thead>  
-        <th>Keresés</tr>
+    <h1>Keresés a sajátjaim között<h1>
+<table> 
     <tr>
     <form action="" method="$_GET">
-        <input type="hidden" name="page" value="15">
         <th><input type="text" name="searchTitle" placeholder="Cím"></th>        
         <th><input type="text" name="searchJoke" placeholder="Vicc"></th>
+        <th><input type="text" name="searchUser" placeholder="Feltöltő"></th>
         <th><button type="submit" name="kereses">Keresés</button></th>
     </form>
     </tr>
@@ -67,7 +53,7 @@ $result = mysqli_query($con , $query);
 $results = mysqli_fetch_all($result);
 foreach($result as $row){
 ?>
-<table class="table table-bordered table-striped">
+<table class="post table table-bordered table-striped">
         <td><?php echo $row["uploader"] ?> </td>
         <?php if (isset($_SESSION['id'])){
             if ($_SESSION['role'] == 'mod' || $_SESSION['id'] == $row['uploaderId'] ) : ?>
@@ -78,9 +64,9 @@ foreach($result as $row){
     <?php endif; } ?>
         
     <tr> 
-        <th><?php echo $row["title"]; ?> </th>
-        <th><?php echo $row["date"]; ?> </th>
-    <tr><td>  
+        <th class="postrow"><?php echo $row["title"]; ?> </th>
+        <th class="postrow"><?php echo $row["date"]; ?> </th>
+    <tr><td colspan="2">  
         <?php
         if($row['type'] == 'joke'){
             echo $row["joke"];
