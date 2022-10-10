@@ -1,5 +1,8 @@
 # A rendszer célja
 
+A rendszer célja, hogy a felhasználók egy jót tudjanak röhögni amikor felátogat az oldalra.
+Vagy megosszon egy jó viccet vagy egy vicces képet, hogy másokat jó kedvre derítsen.
+A rendszer bármelyik web böngészőből elérhető, és bárki bármikor meglátogathatja.
 
 # Üzleti folyamatok modellje
 ![uzleti_folyamat_modell](https://user-images.githubusercontent.com/113434354/193841204-4f0c90ce-38c3-491e-bd02-be316f64f313.jpg)
