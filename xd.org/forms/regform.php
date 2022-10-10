@@ -26,13 +26,7 @@
         Felhasználónév*: <input type="text" name="username" required placeholder="Username"><br>
         Jelszó*: <input type="password" name="password" placeholder="Password" required><br>
         Profilkép feltöltése: <input type="file" accept=".jpeg,.jpg,.png" name="pfp"><br>
-        Jogosultság*:<br>
-        <select name="perms" required>
-            <option selected hidden disabled>Válasszon...</option>
-            <option value="user">Felhasználó</option> 
-            <option value="mod">Adminisztrátor</option>
-        </select><br>
-        <input type="submit" name="submit" value="Regisztrálok" />
+        <input type="submit" name="submit" value="Regisztrálok">
     </form>
     
 </body>
