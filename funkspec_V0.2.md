@@ -43,14 +43,4 @@ A képernyőterv megtalálható a mellékeelt PPT fájlban.
 
 Szereplők: A weboldalnak 2 szereplője van. Az első szereplő az maga a webböngésző amin fut az oldal. Ezzel együtt kezeli az oldal funkcióit. A második szereplő meg a felhazsnálók akik használják az oldalt. Olyan módon mint egy fórumot ami extrákkal bír.
 
-A felhasználó meg tudja látogatni az oldalt vendég ként, de így nem tud letölteni, meg fel. A regisztráció után vagy a bejelentkezés után már elérhetők ezek a funkciók. Az oldalon moderétorok is vannak akik a felhasználókat felügyelik, azzal a célal, hogy ne legyen egy romhalmaz az oldal.
-
-## Funkció–követelmény megfeleltetés
-Követelmény|Funkció
------------|-------
-Viccek listázása|Az oldal az adatbázisból kilistázza a vicceket és a mémeket a kezdőoldalon.
-Viccek/mémek feltöltése|A felhasználó a feltöltő oldalon feltölt egy viccet vagy viccees képet az adatbázisba, névvel együtt, amit a főoldal a feltöltés után meg fog jeleníteni
-Jogosultságkezelés|A weboldalon vannak különböző jogosultságú felhasználók, akik rangjuktól függően megtekinthetik, szerkeszthetik az oldalt, sőt, kezelhetnek más felhasználókat is.
-Közértheető kezelőfelület|A felhasználói felület elkészítése szabványos HTML, CSS, SQL és PHP technológiák felhasználásával történt meg, a képernyőtervek fejezetben leírt mód szerint.
-Dinamikus tartalom|Az előbb leírtak alapján SQL adatbázist használtunk, hogy ki tudjuk elégíteni a bővíthetőségi követelményeket.
-Szórakoztató|Végső célként törekedtünk a tartalom magas minőségére.
+A felhasználó meg tudja látogatni az oldalt vendég ként, de így nem tud letölteni, meg fel. A regisztráció után vagy a bejelentkezés után már elérhetők ezek a funkciók. Az oldalon moderétorok is vannak akik a felhasználókat felügyelik, azzal a céllal, hogy ne legyen egy romhalmaz az oldal.

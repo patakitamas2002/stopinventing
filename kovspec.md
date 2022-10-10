@@ -22,11 +22,11 @@ Minden felhasználó saját felelőségre használja a dolgokat. Nem vállalunk 
 - Vicc feltöltés
 - Szerkesztés
 - Letöltés
--  Kategorizálás
-
-
-# Back-end folyamatok modellje
-
-
+- Kategorizálás
 
 # Követelménylista
+K01 Modern gerinc
+K02, K03 Adatbáziskezelés
+K04 Funkcionális főoldal
+K05, K06 Jogosultságkezelés, Profilom oldal
+K08 Viccek listázása, feltöltése
