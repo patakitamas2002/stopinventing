@@ -10,7 +10,7 @@
 
     switch($d) {
         case 0:
-            include 'processors/listjokes.php';
+            include 'forms/listjokes.php';
             break;
         case -5:
             include 'forms/jokeupload.php';
