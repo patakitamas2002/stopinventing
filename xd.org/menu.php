@@ -8,7 +8,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<img id="banner" src="photos/banner3.jpg">
 <!--<div class="topnav">
     <a href='index.php?page=0'></a>
     <a href='index.php?page=-10'></a>
@@ -66,4 +66,9 @@
   </div>
 </nav>
 </body>
+<style>
+  #banner{
+  width: 100%;
+}
+</style>
 </html>
