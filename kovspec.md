@@ -1,6 +1,6 @@
 ## XD.org
 
-Egy viccoldal, hallgatóktól, hallgatóknak
+Egy viccoldal, hallgatóktól hallgatóknak!
 
 # Bevezető, jelenlegi helyzet
 
@@ -15,7 +15,7 @@ Továbbá szeretnénk kiemelkedő tehetséggondozója lenni a jövő (fotel)humo
 vagy Photoshop-ot és GIMP-et használó és vizuális humorra építő mémkészítők.
 
 # Jogi szabályozások
-Minden felhasználó saját felelőségre használja a dolgokat. Nem vállalunk fellelőséget a feltöltött elemekért.
+Minden felhasználó saját felelőségre használja a dolgokat. Nem vállalunk fellelőséget a feltöltött tartalmakért.
 
 
 # Funkciók
