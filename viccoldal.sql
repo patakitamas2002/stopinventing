@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2022. Okt 01. 20:06
+-- Létrehozás ideje: 2022. Okt 10. 20:13
 -- Kiszolgáló verziója: 10.4.24-MariaDB
 -- PHP verzió: 7.4.29
 
@@ -26,22 +26,6 @@ USE `viccoldal`;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `comments`
---
-
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE `comments` (
-  `commentId` int(11) NOT NULL,
-  `commentText` varchar(500) NOT NULL,
-  `commentLikes` int(11) NOT NULL DEFAULT 0,
-  `commentDate` date NOT NULL,
-  `parentId` int(11) NOT NULL,
-  `commenterId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Tábla szerkezet ehhez a táblához `posts`
 --
 
@@ -50,8 +34,7 @@ CREATE TABLE `posts` (
   `postId` int(11) NOT NULL,
   `postTitle` varchar(200) NOT NULL,
   `joke` text NOT NULL,
-  `postImage` varchar(50) NOT NULL,
-  `postLikes` int(11) DEFAULT 0,
+  `postImage` varchar(200) NOT NULL,
   `postDate` datetime NOT NULL,
   `uploaderId` int(11) NOT NULL,
   `postType` varchar(4) NOT NULL
@@ -70,7 +53,7 @@ CREATE TABLE `users` (
   `password` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `role` varchar(5) NOT NULL,
-  `pfp` varchar(50) NOT NULL
+  `pfp` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -78,21 +61,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userId`, `username`, `password`, `email`, `role`, `pfp`) VALUES
-(1, 'imretab', 'e60e44d0764cce6277b8289ff0af876d', 'imre@imre.com', 'user', 'pistol.png'),
+(1, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'user@random', 'user', ''),
 (2, 'mod', 'ad148a3ca8bd0ef3b48c52454c493ec5', 'mod@mod', 'mod', ''),
-(3, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'user@user', 'user', '');
+(3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@admin', 'admin', '');
 
 --
 -- Indexek a kiírt táblákhoz
 --
-
---
--- A tábla indexei `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`commentId`),
-  ADD KEY `FK_parent_post` (`parentId`),
-  ADD KEY `FK_commenter` (`commenterId`);
 
 --
 -- A tábla indexei `posts`
@@ -112,12 +87,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT a táblához `comments`
---
-ALTER TABLE `comments`
-  MODIFY `commentId` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT a táblához `posts`
 --
 ALTER TABLE `posts`
@@ -134,17 +103,10 @@ ALTER TABLE `users`
 --
 
 --
--- Megkötések a táblához `comments`
---
-ALTER TABLE `comments`
-  ADD CONSTRAINT `FK_commenter` FOREIGN KEY (`commenterId`) REFERENCES `users` (`userId`),
-  ADD CONSTRAINT `FK_parent_post` FOREIGN KEY (`parentId`) REFERENCES `posts` (`postId`);
-
---
 -- Megkötések a táblához `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `FK_uploader` FOREIGN KEY (`uploaderId`) REFERENCES `users` (`userId`);
+  ADD CONSTRAINT `FK_uploader` FOREIGN KEY (`uploaderId`) REFERENCES `users` (`userId`) ON DELETE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
