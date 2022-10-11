@@ -30,15 +30,15 @@ require '../mydbms.php';
         $con = connect('viccoldal', 'root', '');
         if($fileNev!=''){
             $query = "INSERT INTO posts
-            (postTitle,postImage,postLikes,postDate,uploaderId,postType)
+            (postTitle,postImage,postDate,uploaderId,postType)
             VALUES 
-            ('$name','$fileNev',0,'$kuldes_datum','$userId','meme')"; 
+            ('$name','$fileNev','$kuldes_datum','$userId','meme')"; 
         }
         else{
             $query = "INSERT INTO posts
-            (postTitle,joke,postLikes,postDate,uploaderId,postType)
+            (postTitle,joke,postDate,uploaderId,postType)
             VALUES 
-            ('$name','$joke',0,'$kuldes_datum','$userId','joke')"; 
+            ('$name','$joke','$kuldes_datum','$userId','joke')"; 
         }
         //echo $query;
         $result = mysqli_query($con, $query) or die ("Nem sikerült ".$query);
