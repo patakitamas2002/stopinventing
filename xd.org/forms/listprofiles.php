@@ -79,8 +79,8 @@ foreach($result as $row){ ?>
                     if($row["role"] != 'admin' && $_SESSION['role'] == 'admin'){
                         ?>
                     <form action="processors/banuser.php" method="POST">
-                    <input type="hidden" name="userId" value="<?php $row["userId"] ?>">
-                    <button type="submit">Bannolás</button> </form>
+                        <input type="hidden" name="userId" value="<?= $row["userId"]; ?>">
+                        <button type="submit">Bannolás</button> </form>
                     <?php } ?>
                     <?php if($row["role"]  == 'user' && $_SESSION['role'] == 'mod'){ ?>
                         <form action="processors/banuser.php" method="POST">
