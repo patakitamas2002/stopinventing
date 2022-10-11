@@ -11,4 +11,11 @@
     <p class="hiba">404! Ez az oldal nem létezik</p>
     <a href="./index.php?page=0" class="link">Vissza a főoldalra</a>
 </body>
+    
+    <style>
+        body{
+            background-color: turquoise; 
+            margin: auto;
+        }
+    </style>
 </html>
