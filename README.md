@@ -3,7 +3,7 @@ AFP 3 (senior):
 
 Hadobás Dávid;
 
-AFP 1(junior):
+AFP 1 (junior):
 
 Backend: Pataki Tamás && Tabajdi József Imre;
 
