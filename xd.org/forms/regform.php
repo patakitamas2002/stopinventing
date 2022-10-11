@@ -13,12 +13,6 @@
         <p>Felhasználónév*:</p> <input type="text" name="username" required placeholder="Username"><br>
         <p>Jelszó*:</p> <input type="password" name="password" placeholder="Password" required><br>
         <p>Profilkép feltöltése:</p> <input type="file" accept=".jpeg,.jpg,.png" name="pfp"><br>
-        <p>Jogosultság*:</p><br>
-        <select name="perms" required>
-            <option selected hidden disabled>Válasszon...</option>
-            <option value="user">Felhasználó</option> 
-            <option value="mod">Adminisztrátor</option>
-        </select><br>
         <input class="reg" type="submit" name="submit" value="Regisztrálok" />
     </form>
     
