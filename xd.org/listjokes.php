@@ -15,6 +15,9 @@
         input, button{   
             height: 34px;   
         }  </style> 
+<?php
+    require 'mydbms.php';
+?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -49,8 +52,9 @@ if(isset($_GET["searchUser"])){
     $searchUser= $_GET["searchUser"];
 }
 if(!isset($_SESSION['id'])){
-require './mydbms.php';
+require 'mydbms.php';
 }
+
 $con = connect('viccoldal', 'root', '');
 $query= "SELECT posts.postDate as date, users.username as uploader, 
     posts.postTitle as title, posts.joke as joke, posts.postImage as image,
@@ -72,7 +76,7 @@ foreach($result as $row){
         <td><?php echo $row["uploader"] ?> </td>
         <?php if (isset($_SESSION['id'])){
             if ($_SESSION['role'] == 'mod' || $_SESSION['id'] == $row['uploaderId'] ) : ?>
-            <td><form action="processors/postdelete.php" method="POST">
+            <td><form action="./postdelete.php" method="POST">
                 <input type="hidden" name="postId" value="<?= $row["id"] ?>">
                 <button type="submit">Töröl</button>
             </form></td>
