@@ -30,13 +30,13 @@ id-jű  -->
 <form name="updateForm" action="processors/updateprofile.php" method="POST" enctype="multipart/form-data" onsubmit="return JelszoCheck()">
     <input type="hidden" name="userId" value=<?=$_SESSION['id']?>>
     <p>Felhasználónév: </p>
-    <input type="text" name="username" require value=<?=$_SESSION['username']?>><br>
+    <input type="text" name="username" required value=<?=$_SESSION['username']?>><br>
 
     <p>Jelszó módosítása: </p>
-    <input type="password" name="password" value="" require><br>
+    <input type="password" name="password" value="" required><br>
 
     <p>Jelszó megint: </p>
-    <input type="password" name="passwordAgain" value="" require><br>
+    <input type="password" name="passwordAgain" value="" required><br>
 
     <p>Profilkép frisstése: </p>
     <input type="file" accept=".jpeg,.jpg,.png" name="pfp"/><br>
