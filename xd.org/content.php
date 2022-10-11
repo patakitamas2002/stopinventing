@@ -31,8 +31,7 @@
             include 'forms/listprofiles.php';
             break;
         default:
-            echo '<p class="hiba">404! Ez az oldal nem létezik</p>';
-            echo '<a href="./index.php?page=0" class="link">Vissza a főoldalra</a>';
+            include 'default.php';
             break;
     }
 ?>
