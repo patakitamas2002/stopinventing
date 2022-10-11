@@ -15,7 +15,13 @@
     <style>
         body{
             background-color: turquoise; 
-            margin: auto;
+        }
+        
+        p{
+        text-align: center;
+        font-size: 50px;
+        margin-top: 250px;
+        border-bottom: 5px solid black;
         }
     </style>
 </html>
