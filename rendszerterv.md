@@ -46,4 +46,4 @@ Fejlesztői eszközök:
     Diagrams.net
 
 # Adatbázis terv
-<img width="411" alt="adatbazis_model" src="https://user-images.githubusercontent.com/113434354/193841446-4a2fc2d3-364a-402e-b42b-1509155c8b84.PNG">
+<img width="360" alt="adatbazis_model" src="https://user-images.githubusercontent.com/113434354/195064010-68790616-ef35-4fed-becb-300bfcbb9cd5.PNG">
