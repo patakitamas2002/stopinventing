@@ -3,7 +3,6 @@
 
     if(isset($_POST['username']) &&
         isset($_POST['password']) &&
-        isset($_POST["perms"]) &&
         isset($_POST["email"])) {
 
         /*echo $_POST['username'];
@@ -13,7 +12,6 @@
         $con = connect('viccoldal', 'root', '');
         $username = $_POST['username'];
         $password = md5($_POST['password']);
-        $perms = $_POST['perms'];
         $email = $_POST['email'];
         //$pfp = $_POST['pfp'];
         $checkName="SELECT COUNT(*) FROM `users` WHERE `username` = '$username' OR `email` = '$email'";
@@ -38,7 +36,7 @@
             //echo $utvonal;
             move_uploaded_file($_FILES["pfp"]["tmp_name"], $utvonal);
             $query =  'INSERT INTO users(username, password, email,role, pfp)
-            VALUES("'.$username.'", "'.$password.'", "'.$email.'", "'.$perms.'", "'.$fileNev.'")';
+            VALUES("'.$username.'", "'.$password.'", "'.$email.'", "user", "'.$fileNev.'")';
 
             $results = mysqli_query($con, $query)  or die ("Nem sikerült ".$query);
             echo "Sikeres regisztráció!";
